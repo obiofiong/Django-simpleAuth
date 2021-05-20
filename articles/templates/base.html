@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/basestyle.css' %}">
+
+    <title>Articles</title>
+</head>
+<body>
+    
+    <header><h1>
+        <a href="/">My personal Blog</a></h1>
+    </header>
+
+    <div class="container">
+
+        {% if user.is_authenticated %}
+        <p>You are logged in</p>
+        <p>Hey there: {{user.username}}, Howdy</p>
+        <p>Please <a href="{% url 'logout' %}">Logout</a>here</p>
+
+        {% else %}
+        <p>You are not logged in</p>
+        <p>Please  <a href="{% url 'login' %}">Login</a> here</p>
+
+        {% endif %}
+    
+    {% block content %}
+    
+    {% endblock %}
+    </div>
+
+</body>
+</html>
